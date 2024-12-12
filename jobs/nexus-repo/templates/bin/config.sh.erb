@@ -1,0 +1,19 @@
+#!/bin/bash -eu
+
+export JOB_NAME='nexus-repo'
+export JOB_DIR="/var/vcap/jobs/$JOB_NAME"
+export RUN_DIR="/var/vcap/sys/run/$JOB_NAME"
+export PID_FILE="/var/vcap/sys/run/$JOB_NAME/$JOB_NAME.pid"
+export LOG_DIR="/var/vcap/sys/log/$JOB_NAME"
+export TMP_DIR="/var/vcap/data/sys/tmp/$JOB_NAME"
+export PACKAGE_DIR="/var/vcap/packages/$JOB_NAME"
+export EPHEMERAL_DATA_DIR="/var/vcap/data/$JOB_NAME"
+export STORE_DIR="/var/vcap/store/$JOB_NAME"
+
+export JAVA_MEM_PERCENTAGE='<%= p("nexus_repo.java.mem_percentage") %>'
+export JAVA_HOME='<%= p("nexus_repo.java.home") %>'
+export PATH="$PATH:$JAVA_HOME/bin"
+
+<%- p('nexus_repo.envs', {}).each do |key, val| -%>
+export <%= key %>="<%= val %>"
+<%- end -%>

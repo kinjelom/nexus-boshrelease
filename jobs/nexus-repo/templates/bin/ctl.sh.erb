@@ -1,0 +1,28 @@
+#!/bin/bash -eu
+
+source /var/vcap/jobs/nexus-repo/bin/config.sh
+source /var/vcap/packages/common/pid_utils.sh
+
+exec 1>> "${LOG_DIR}/$(basename "$0").stdout.log"
+exec 2>> "${LOG_DIR}/$(basename "$0").stderr.log"
+
+case $1 in
+
+  start)
+
+    pid_guard "$PID_FILE" "$JOB_NAME"
+    exec chpst -u vcap:vcap nohup /var/vcap/jobs/nexus-repo/bin/start-nexus-repo.sh &
+    sleep 5
+    echo $! > "$PID_FILE"
+    ;;
+
+  stop)
+
+    kill_and_wait "$PID_FILE"
+    ;;
+
+  *)
+    echo "Usage: ctl {start|stop}" ;;
+
+esac
+

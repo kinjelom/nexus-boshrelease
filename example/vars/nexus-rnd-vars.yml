@@ -1,0 +1,4 @@
+persistent_disk_type: 10GB
+vm_type: bosh.c2.r2
+pgrc_version: latest
+azs: [z2]

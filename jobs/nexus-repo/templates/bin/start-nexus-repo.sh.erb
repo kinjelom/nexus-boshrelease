@@ -1,0 +1,32 @@
+#!/bin/bash -eu
+
+source /var/vcap/jobs/nexus-repo/bin/config.sh
+source /var/vcap/packages/common/jvm_options.sh
+
+# shellcheck disable=SC2034
+declare -a opts
+read_jvm_options_file "/var/vcap/packages/nexus-repo/bin/nexus.vmoptions" opts
+update_jvm_options_file "/var/vcap/jobs/nexus-repo/etc/nexus.vmoptions.override" opts
+
+remove_params_with_prefix "-Xmx" opts
+remove_params_with_prefix "-Xms" opts
+
+TOTAL_RAM=$(free -m | awk '/^Mem:/{print $2}')
+JAVA_MEMORY=$(awk "BEGIN {printf \"%.0f\", $TOTAL_RAM * $JAVA_MEM_PERCENTAGE / 100}")
+JAVA_MEMORY_M=$(printf "%.0f" "$JAVA_MEMORY")
+
+put_param "-Xms${JAVA_MEMORY_M}M" opts
+put_param "-Xmx${JAVA_MEMORY_M}M" opts
+put_param "-XX:MaxDirectMemorySize=${JAVA_MEMORY_M}M" opts
+
+# shellcheck disable=SC2034
+declare jvm_params
+build_java_params opts jvm_params
+
+ulimit -n 65536
+
+# Execute Java with options
+# shellcheck disable=SC2206
+START_CMD=("$JAVA_HOME/bin/java" "-server" $jvm_params "-cp" "$PACKAGE_DIR/lib/*:$PACKAGE_DIR/lib/boot/*:$PACKAGE_DIR/lib/endorsed/*" "org.sonatype.nexus.karaf.NexusMain")
+exec "${START_CMD[@]}"
+

@@ -1,0 +1,5 @@
+check process nexus-repo
+  with pidfile "/var/vcap/sys/run/nexus-repo/nexus-repo.pid"
+  start program "/var/vcap/jobs/nexus-repo/bin/ctl start"
+  stop program "/var/vcap/jobs/nexus-repo/bin/ctl stop"
+  group vcap

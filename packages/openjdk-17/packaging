@@ -1,0 +1,10 @@
+set -e
+
+tar xfv openjdk/openjdk-17.*.tar.gz
+cp -a ./jdk-17.*/* $BOSH_INSTALL_TARGET
+
+rm -rf $BOSH_INSTALL_TARGET/java
+rm -rf $BOSH_INSTALL_TARGET/demo
+rm -rf $BOSH_INSTALL_TARGET/sample
+rm -rf $BOSH_INSTALL_TARGET/man
+rm -rf $BOSH_INSTALL_TARGET/src.zip

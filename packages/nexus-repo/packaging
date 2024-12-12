@@ -1,0 +1,6 @@
+set -e
+
+source meta-info/blobs-versions.env
+
+tar xfv nexus-repo/nexus-repo-${NEXUS_REPO_VERSION}-unix.tar.gz
+cp -ar ./nexus-${NEXUS_REPO_VERSION}/* $BOSH_INSTALL_TARGET

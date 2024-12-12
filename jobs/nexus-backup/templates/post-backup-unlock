@@ -1,5 +1,0 @@
-#!/bin/bash
-
-set -e
-
-/var/vcap/bosh/bin/monit start nexus

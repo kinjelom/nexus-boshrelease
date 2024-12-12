@@ -1,8 +1,0 @@
-set -e
-
-NEXUS_VERSION=3.28.1-01
-
-tar xfv nexus/nexus-${NEXUS_VERSION}-unix.tar.gz
-cp -ar ./nexus-${NEXUS_VERSION} $BOSH_INSTALL_TARGET/nexus
-cp -ar ./sonatype-work $BOSH_INSTALL_TARGET/
-

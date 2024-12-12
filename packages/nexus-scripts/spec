@@ -1,7 +1,0 @@
----
-name: nexus-scripts
-
-dependencies: []
-
-files:
-- nexus-scripts/*.sh

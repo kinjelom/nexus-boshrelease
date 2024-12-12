@@ -1,0 +1,4 @@
+nexus_version: latest
+vm_type: bosh.c2.r2
+persistent_disk_type: 10GB
+azs: [z2]

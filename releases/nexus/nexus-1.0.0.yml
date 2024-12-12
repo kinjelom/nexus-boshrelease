@@ -1,0 +1,33 @@
+name: nexus
+version: 1.0.0
+commit_hash: 6fb08ba
+uncommitted_changes: false
+jobs:
+- name: nexus-repo
+  version: c067157755b49675615b2e26ac4c807fb0741b24540a9ba7ec426c5a2004b8d5
+  fingerprint: c067157755b49675615b2e26ac4c807fb0741b24540a9ba7ec426c5a2004b8d5
+  sha1: sha256:b22e7f70c2ff9552ecf0d3b5bc28540c8ec5db1d5e67988427a212559e51d463
+  packages:
+  - nexus-repo
+  - openjdk-17
+  - common
+packages:
+- name: common
+  version: c177dd2d320f2124f0bca3e1eb41225922ca1999bba0261741d9220332dd8bf0
+  fingerprint: c177dd2d320f2124f0bca3e1eb41225922ca1999bba0261741d9220332dd8bf0
+  sha1: sha256:237ee97e17e78723414d938f70aaba4a4244c9fd309fad3160a580e9d9d09671
+  dependencies: []
+- name: nexus-repo
+  version: 2a89b1560c719d0df2a677ca6c5d06bf87ce3c4f70330213d1c5cf7882f4a678
+  fingerprint: 2a89b1560c719d0df2a677ca6c5d06bf87ce3c4f70330213d1c5cf7882f4a678
+  sha1: sha256:b36de41b3651c442125b681bbb17f8471e264c4f20b50be4d56f3479d6bebdcb
+  dependencies: []
+- name: openjdk-17
+  version: 8d330e8a9946c5c89bdf35c571d4ea23573228c5a92881f9aaf4253740a8f87e
+  fingerprint: 8d330e8a9946c5c89bdf35c571d4ea23573228c5a92881f9aaf4253740a8f87e
+  sha1: sha256:6d4e3e84894781786b7d0526faffc89131825c69c53921eff85ab70fddf103a8
+  dependencies: []
+license:
+  version: ae18946b5cd7a9a88e62de3230d811980fa47606843e45b52990c198e2f267b5
+  fingerprint: ae18946b5cd7a9a88e62de3230d811980fa47606843e45b52990c198e2f267b5
+  sha1: sha256:1c743c45ac8c4c00c7ac768dca16c32a598bf4b84b3e92a5ba35542a1806bed7

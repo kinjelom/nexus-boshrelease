@@ -1,0 +1,8 @@
+---
+name: nexus-repo
+
+dependencies: []
+
+files:
+- meta-info/blobs-versions.env
+- nexus-repo/*.tar.gz

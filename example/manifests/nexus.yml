@@ -1,0 +1,32 @@
+---
+name: ((deployment_name))
+
+instance_groups:
+- name: nexus-repo
+  instances: 1
+  vm_type: ((vm_type))
+  persistent_disk_type: ((persistent_disk_type))
+  stemcell: default
+  azs: ((azs))
+  networks:
+  - name: default
+  jobs:
+  - name: nexus-repo
+    release: nexus
+
+releases:
+  - name: nexus
+    version: ((nexus_version))
+
+stemcells:
+  - alias: default
+    os: ubuntu-jammy
+    version: latest
+
+update:
+  canaries: 1
+  max_in_flight: 1
+  serial: false
+  canary_watch_time: 1000-60000
+  update_watch_time: 1000-60000
+

@@ -12,6 +12,8 @@ blobs
 .final_builds/packages/**/*.tgz
 .temp
 .tmp
+.download
+.downloads
 *.swp
 *~
 *#

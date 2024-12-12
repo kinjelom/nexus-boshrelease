@@ -37,5 +37,6 @@ For more details, see:
 
 ## TODO
 
-- HA
 - Docker Registry UI using https://github.com/Joxit/docker-registry-ui
+- Nexus IQ
+- HA / PostgreSQL

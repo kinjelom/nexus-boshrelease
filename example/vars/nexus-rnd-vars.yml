@@ -1,4 +1,4 @@
-persistent_disk_type: 10GB
+nexus_version: latest
 vm_type: bosh.c2.r2
-pgrc_version: latest
+persistent_disk_type: 10GB
 azs: [z2]

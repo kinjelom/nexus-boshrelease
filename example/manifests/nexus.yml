@@ -1,15 +1,6 @@
 ---
 name: ((deployment_name))
 
-releases:
-- name: nexus
-  version: latest
-
-stemcells:
-- alias: default
-  os: ubuntu-jammy
-  version: latest
-
 instance_groups:
 - name: nexus-repo
   instances: 1
@@ -22,10 +13,15 @@ instance_groups:
   jobs:
   - name: nexus-repo
     release: nexus
-    properties:
-      nexus_repo:
-        envs:
-          TEST_ENV1: abc
+
+releases:
+  - name: nexus
+    version: ((nexus_version))
+
+stemcells:
+  - alias: default
+    os: ubuntu-jammy
+    version: latest
 
 update:
   canaries: 1

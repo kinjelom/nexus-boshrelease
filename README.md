@@ -6,8 +6,6 @@ Nexus Repository and Java versions: [blobs-versions.env](src/meta-info/blobs-ver
 
 ## Configuring the Runtime Environment
 
-https://help.sonatype.com/en/configuring-the-runtime-environment.html
-
 ```yaml
 ---
 instance_groups:
@@ -32,11 +30,13 @@ instance_groups:
           ".level": INFO
 ```
 For more details, see:
+- https://help.sonatype.com/en/configuring-the-runtime-environment.html
 - [nexus-repo spec](jobs/nexus-repo/spec)
 - [deployment manifests example](example/manifests/nexus.yml)
 
 ## TODO
 
+- BBR
 - Docker Registry UI using https://github.com/Joxit/docker-registry-ui
 - Nexus IQ
 - HA / PostgreSQL

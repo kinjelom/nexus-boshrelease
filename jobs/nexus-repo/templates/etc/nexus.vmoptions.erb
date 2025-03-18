@@ -1,0 +1,43 @@
+## XX config
+-XX:+UnlockExperimentalVMOptions
+-XX:+UseG1GC
+-XX:+UnlockDiagnosticVMOptions
+-XX:+LogVMOutput
+-XX:LogFile=/var/vcap/sys/log/nexus-repo/jvm.log
+-XX:-OmitStackTraceInFastThrow
+## top-level nexus properties:
+-Dapplication-port=<%= p('nexus_repo.application_port') %>
+-Dapplication-host=<%= p('nexus_repo.application_host') %>
+-Dnexus-context-path=<%= p('nexus_repo.context_path') %>
+-Dnexus.secrets.file=/var/vcap/jobs/nexus-repo/secrets/nexus-secrets.json
+-Djava.io.tmpdir=/var/vcap/sys/tmp/nexus-repo
+-Djava.util.logging.config.file=/var/vcap/jobs/nexus-repo/etc/java.util.logging.properties
+-Djdk.tls.ephemeralDHKeySize=2048
+## karaf config:
+-Dkaraf.home=/var/vcap/packages/nexus-repo
+-Dkaraf.base=/var/vcap/packages/nexus-repo
+-Dkaraf.etc=etc/karaf
+-Dkaraf.data=/var/vcap/store/nexus-repo
+-Dkaraf.log=/var/vcap/sys/log/nexus-repo
+-Dkaraf.bootstrap.log=/var/vcap/sys/log/nexus-repo/karaf-bootstrap.log
+## additional vmoptions needed for Java9+:
+--add-reads=java.xml=java.logging
+--add-opens=java.base/java.security=ALL-UNNAMED
+--add-opens=java.base/java.net=ALL-UNNAMED
+--add-opens=java.base/java.lang=ALL-UNNAMED
+--add-opens=java.base/java.util=ALL-UNNAMED
+--add-opens=java.naming/javax.naming.spi=ALL-UNNAMED
+--add-opens=java.rmi/sun.rmi.transport.tcp=ALL-UNNAMED
+--add-exports=java.base/sun.net.www.protocol.http=ALL-UNNAMED
+--add-exports=java.base/sun.net.www.protocol.https=ALL-UNNAMED
+--add-exports=java.base/sun.net.www.protocol.jar=ALL-UNNAMED
+--add-exports=jdk.xml.dom/org.w3c.dom.html=ALL-UNNAMED
+--add-exports=jdk.naming.rmi/com.sun.jndi.url.rmi=ALL-UNNAMED
+--add-exports=java.security.sasl/com.sun.security.sasl=ALL-UNNAMED
+--add-exports=java.base/sun.security.x509=ALL-UNNAMED
+--add-exports=java.base/sun.security.rsa=ALL-UNNAMED
+--add-exports=java.base/sun.security.pkcs=ALL-UNNAMED
+## properties.nexus_repo.additional_nexus_vmoptions:
+<%- p('nexus_repo.additional_nexus_vmoptions', []).each do |line| -%>
+<%= line %>
+<%- end -%>

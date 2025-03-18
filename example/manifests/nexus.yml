@@ -13,6 +13,23 @@ instance_groups:
   jobs:
   - name: nexus-repo
     release: nexus
+    properties:
+      nexus_repo:
+        secrets:
+          active_key: secret_1
+          keys:
+            secret_1: ((nexus_repo_encryption_secret_1))
+        additional_nexus_vmoptions:
+          - "-Dnexus.datastore.enabled=true"
+          - "-Dnexus.datastore.nexus.username=((nexus_db_user))"
+          - "-Dnexus.datastore.nexus.password=((nexus_db_password))"
+          - "-Dnexus.datastore.nexus.jdbcUrl=((nexus_jdbc_url))"
+
+variables:
+  - name: nexus_repo_encryption_secret_1
+    type: password
+    options:
+      length: 32
 
 releases:
   - name: nexus

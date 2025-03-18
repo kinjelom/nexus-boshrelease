@@ -20,9 +20,6 @@ function down_add_blob {
 }
 
 down_add_blob "nexus-repo" "nexus-repo-${NEXUS_REPO_VERSION}-unix.tar.gz" "$NEXUS_REPO_URL"
-down_add_blob "openjdk" "openjdk-${JDK_17_VERSION}-linux-amd64.tar.gz" "$JDK_17_URL"
-
-
 
 echo "Download blobs into blobs/ based on config/blobs.yml"
 bosh sync-blobs

@@ -1,5 +1,9 @@
 check process nexus-repo
   with pidfile "/var/vcap/sys/run/nexus-repo/nexus-repo.pid"
-  start program "/var/vcap/jobs/nexus-repo/bin/ctl start"
+  start program "/var/vcap/jobs/nexus-repo/bin/ctl start" with timeout 120 seconds
   stop program "/var/vcap/jobs/nexus-repo/bin/ctl stop"
+  if failed host 127.0.0.1 port <%= p('nexus_repo.application_port') %> protocol http
+    and request "<%= p('nexus_repo.context_path') %>service/rest/v1/status"
+    with timeout 30 seconds for 12 cycles
+    then restart
   group vcap

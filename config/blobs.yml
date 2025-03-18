@@ -1,6 +1,4 @@
-nexus-repo/nexus-repo-3.75.1-01-unix.tar.gz:
-  size: 239429340
-  sha: sha256:8f2d425f896bce70872ee0e51568dd466e5e3d38b6a65a8c0ff0d79a23540cd1
-openjdk/openjdk-17.0.13+12-linux-amd64.tar.gz:
-  size: 214079740
-  sha: sha256:25f8ffa72fdab92bcc6e664d09d437a8e3d9131d4b5c940aaf795bc4057bdd6f
+nexus-repo/nexus-repo-3.78.1-02-unix.tar.gz:
+  size: 418689397
+  object_id: b7268cd2-86f6-4387-4f00-a4279a53b85b
+  sha: sha256:5a3a3deaa77e28842c12ddc23d1928da30a31e32d114a02c68b5d0238ad9b7bc

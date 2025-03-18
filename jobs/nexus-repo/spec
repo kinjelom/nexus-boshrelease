@@ -6,33 +6,32 @@ templates:
   bin/ctl.sh.erb: bin/ctl
   bin/pre-start.sh.erb: bin/pre-start
   bin/start-nexus-repo.sh.erb: bin/start-nexus-repo.sh
-  etc/nexus.properties.erb: etc/nexus.properties
   etc/java.util.logging.properties.erb: etc/java.util.logging.properties
-  etc/nexus.vmoptions.override.erb: etc/nexus.vmoptions.override
+  etc/nexus.vmoptions.erb: etc/nexus.vmoptions
+  secrets/nexus-secrets.json.erb: secrets/nexus-secrets.json
 
 packages:
 - nexus-repo
-- openjdk-17
 - common
 
 properties:
-  nexus_repo.nexus_properties:
-     description: "nexus.properties - https://help.sonatype.com/en/configuring-the-runtime-environment.html"
-     default:
-       application-port: 8080
-       application-host: 0.0.0.0
-       nexus-context-path: /
-  nexus_repo.nexus_vmoptions:
-     description: "nexus.vmoptions - https://help.sonatype.com/en/configuring-the-runtime-environment.html"
-     default: ["-XX:+UseG1GC", "-XX:+UnlockExperimentalVMOptions"]
+  nexus_repo.application_port:
+     description: "Nexus application HTTP port, aka: application-port"
+     default: 8080
+  nexus_repo.application_host:
+     description: "Nexus application host, aka: application-host"
+     default: "0.0.0.0"
+  nexus_repo.context_path:
+     description: "Nexus context path, aka: nexus-context-path"
+     default: "/"
+  nexus_repo.additional_nexus_vmoptions:
+     description: "additional nexus.vmoptions - https://help.sonatype.com/en/configuring-the-runtime-environment.html#nexus-vmoptions"
+     default: []
   nexus_repo.envs:
     description: "Environment variables"
     default: {}
     example:
       TEST_ENV1: "val1"
-  nexus_repo.java.home:
-    description: "Java Home Dir"
-    default: "/var/vcap/packages/openjdk-17"
   nexus_repo.java.mem_percentage:
     description: "Java memory percentage"
     default: "70"
@@ -44,3 +43,14 @@ properties:
      default: {}
      example:
        ".level": INFO
+  nexus_repo.secrets.keys:
+     description: An array containing encryption keys; a unique identifier for the key and the secret key value
+     default: ~
+     example:
+        secret-1: zazolc
+        secret-2: gesla
+        secret-3: jazn
+  nexus_repo.secrets.active_key:
+     description: The key to use for encryption; the value matches the id in the secrets.keys array
+     default: ~
+     example: secret-1

@@ -2,3 +2,6 @@ nexus_version: latest
 vm_type: bosh.c2.r2
 persistent_disk_type: 10GB
 azs: [z2]
+nexus_db_user: nexus_rnd
+nexus_db_password: ((/bosh-rnd/postgres-rnd/nexus_rnd_password))
+nexus_jdbc_url: "jdbc:postgresql://q-s0.postgres.default.postgres-rnd.bosh:5432/nexus_rnd"

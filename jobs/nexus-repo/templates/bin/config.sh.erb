@@ -8,11 +8,13 @@ export LOG_DIR="/var/vcap/sys/log/$JOB_NAME"
 export TMP_DIR="/var/vcap/data/sys/tmp/$JOB_NAME"
 export PACKAGE_DIR="/var/vcap/packages/$JOB_NAME"
 export EPHEMERAL_DATA_DIR="/var/vcap/data/$JOB_NAME"
+export PACKAGE_EPHEMERAL_DATA_DIR="/var/vcap/data/packages/$JOB_NAME"
 export STORE_DIR="/var/vcap/store/$JOB_NAME"
 
-export JAVA_MEM_PERCENTAGE='<%= p("nexus_repo.java.mem_percentage") %>'
-export JAVA_HOME='<%= p("nexus_repo.java.home") %>'
+EMBEDDED_JDK="$(realpath "$PACKAGE_DIR/jdk/"*/jdk-*)"
+export JAVA_HOME="$EMBEDDED_JDK"
 export PATH="$PATH:$JAVA_HOME/bin"
+export JAVA_MEM_PERCENTAGE='<%= p("nexus_repo.java.mem_percentage") %>'
 
 <%- p('nexus_repo.envs', {}).each do |key, val| -%>
 export <%= key %>="<%= val %>"

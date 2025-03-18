@@ -15,19 +15,24 @@ instance_groups:
     release: nexus
     properties:
       nexus_repo:
-        nexus_properties:
-          application-port: 8080
-          application-host: 0.0.0.0
-          nexus-context-path: /
-        nexus_vmoptions:
-          - "-XX:+UseG1GC"
-          - "-XX:+UnlockExperimentalVMOptions"
+        secrets:
+          active_key: secret_1
+          keys:
+            secret_1: ((nexus_repo_encryption_secret_1))
+        additional_nexus_vmoptions:
+          - "-Dnexus.datastore.enabled=true"
+          - "-Dnexus.datastore.nexus.username=((nexus_db_user))"
+          - "-Dnexus.datastore.nexus.password=((nexus_db_password))"
+          - "-Dnexus.datastore.nexus.jdbcUrl=((nexus_jdbc_url))"
         envs:
           TEST_ENV1: abc
-        java.home: "/var/vcap/packages/openjdk-17"
-        java.mem_percentage: "70"
         java_util_logging_properties:
           ".level": INFO
+variables:
+  - name: nexus_repo_encryption_secret_1
+    type: password
+    options:
+      length: 32
 ```
 For more details, see:
 - https://help.sonatype.com/en/configuring-the-runtime-environment.html

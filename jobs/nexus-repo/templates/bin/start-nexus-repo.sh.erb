@@ -5,9 +5,7 @@ source /var/vcap/packages/common/jvm_options.sh
 
 # shellcheck disable=SC2034
 declare -a opts
-read_jvm_options_file "/var/vcap/packages/nexus-repo/bin/nexus.vmoptions" opts
-update_jvm_options_file "/var/vcap/jobs/nexus-repo/etc/nexus.vmoptions.override" opts
-
+read_jvm_options_file "$JOB_DIR/etc/nexus.vmoptions" opts
 remove_params_with_prefix "-Xmx" opts
 remove_params_with_prefix "-Xms" opts
 
@@ -27,6 +25,6 @@ ulimit -n 65536
 
 # Execute Java with options
 # shellcheck disable=SC2206
-START_CMD=("$JAVA_HOME/bin/java" "-server" $jvm_params "-cp" "$PACKAGE_DIR/lib/*:$PACKAGE_DIR/lib/boot/*:$PACKAGE_DIR/lib/endorsed/*" "org.sonatype.nexus.karaf.NexusMain")
+START_CMD=("$JAVA_HOME/bin/java" "-server" $jvm_params -jar "$PACKAGE_DIR"/bin/sonatype-nexus-repository-*.jar)
+cd "$PACKAGE_DIR" || exit 1
 exec "${START_CMD[@]}"
-

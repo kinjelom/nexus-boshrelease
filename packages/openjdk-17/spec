@@ -1,7 +1,0 @@
----
-name: openjdk-17
-
-dependencies: []
-
-files:
-- openjdk/*.tar.gz

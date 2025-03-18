@@ -12,7 +12,6 @@ case $1 in
 
     pid_guard "$PID_FILE" "$JOB_NAME"
     exec chpst -u vcap:vcap nohup /var/vcap/jobs/nexus-repo/bin/start-nexus-repo.sh &
-    sleep 5
     echo $! > "$PID_FILE"
     ;;
 

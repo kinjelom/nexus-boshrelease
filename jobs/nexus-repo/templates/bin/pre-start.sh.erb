@@ -3,11 +3,9 @@
 source /var/vcap/jobs/nexus-repo/bin/config.sh
 source /var/vcap/packages/common/fs_utils.sh
 
+mkdir -p "$RUN_DIR" "$LOG_DIR" "$TMP_DIR" "$EPHEMERAL_DATA_DIR" "$STORE_DIR/etc" "$PACKAGE_EPHEMERAL_DATA_DIR/sonatype-work"
+chown -R vcap:vcap "$RUN_DIR" "$LOG_DIR" "$TMP_DIR" "$EPHEMERAL_DATA_DIR" "$STORE_DIR" "$PACKAGE_EPHEMERAL_DATA_DIR/sonatype-work"
 
-mkdir -p "$RUN_DIR" "$LOG_DIR" "$TMP_DIR" "$EPHEMERAL_DATA_DIR" "$STORE_DIR/etc"
-chown -R vcap:vcap "$RUN_DIR" "$LOG_DIR" "$TMP_DIR" "$EPHEMERAL_DATA_DIR" "$STORE_DIR"
-
-## re-link nexus.properties - https://help.sonatype.com/en/configuring-the-runtime-environment.html
-force_file_link "$STORE_DIR/etc/nexus.properties" "$JOB_DIR/etc/nexus.properties"
 force_dir_link "$STORE_DIR/log" "$LOG_DIR"
 force_dir_link "$STORE_DIR/tmp" "$TMP_DIR"
+

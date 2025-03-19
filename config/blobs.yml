@@ -1,4 +1,4 @@
-nexus-repo/nexus-repo-3.78.1-02-unix.tar.gz:
-  size: 418689397
-  object_id: b7268cd2-86f6-4387-4f00-a4279a53b85b
-  sha: sha256:5a3a3deaa77e28842c12ddc23d1928da30a31e32d114a02c68b5d0238ad9b7bc
+nexus-repo/nexus-repo-3.78.2-04-unix.tar.gz:
+  size: 418710623
+  object_id: 0465f812-d579-4334-550e-d8965a9ff980
+  sha: sha256:c78a099374d33f6f31f784eb471a4cb34c670b5b7c99538d3ba38e0c1404bd63

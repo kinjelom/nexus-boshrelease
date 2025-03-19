@@ -1,0 +1,27 @@
+name: nexus
+version: 1.1.1
+commit_hash: 65db149
+uncommitted_changes: false
+jobs:
+- name: nexus-repo
+  version: f45c5211df3fb2f9e5607a4f1ebbdb4ededfa8eeae51aa6d27f8d46c5d79e10e
+  fingerprint: f45c5211df3fb2f9e5607a4f1ebbdb4ededfa8eeae51aa6d27f8d46c5d79e10e
+  sha1: sha256:3bee54e0696553756f2a211184842b27c54d58b810938a00cb941907778770aa
+  packages:
+  - nexus-repo
+  - common
+packages:
+- name: common
+  version: c00054c000a56259096ddbcbe08b756b6cc0be6c4e3b8b0e06deccf893746997
+  fingerprint: c00054c000a56259096ddbcbe08b756b6cc0be6c4e3b8b0e06deccf893746997
+  sha1: sha256:1c6bd6f7097ab4c6f0135c20bafad4e3118822a42c1ca70ed3dc85bc73d05d29
+  dependencies: []
+- name: nexus-repo
+  version: a184fcee77a470631f5a2a81fb73a5017e922d916953d4f19cf7b6bb9a99c00f
+  fingerprint: a184fcee77a470631f5a2a81fb73a5017e922d916953d4f19cf7b6bb9a99c00f
+  sha1: sha256:6996f206c3319dacfb487deb215ffe72f18b84df1f7fbab900e54d1c36da65ca
+  dependencies: []
+license:
+  version: ae18946b5cd7a9a88e62de3230d811980fa47606843e45b52990c198e2f267b5
+  fingerprint: ae18946b5cd7a9a88e62de3230d811980fa47606843e45b52990c198e2f267b5
+  sha1: sha256:1c743c45ac8c4c00c7ac768dca16c32a598bf4b84b3e92a5ba35542a1806bed7

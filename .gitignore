@@ -27,3 +27,4 @@ credentials.yml
 *.key
 *.p12
 creds.yml
+prv-notes.md

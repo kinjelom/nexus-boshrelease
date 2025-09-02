@@ -19,7 +19,7 @@ function down_add_blob {
   fi
 }
 
-down_add_blob "nexus-repo" "nexus-repo-${NEXUS_REPO_VERSION}-unix.tar.gz" "$NEXUS_REPO_URL"
+down_add_blob "nexus-repo" "nexus-repo-${NEXUS_REPO_VERSION}.tar.gz" "$NEXUS_REPO_URL"
 
 echo "Download blobs into blobs/ based on config/blobs.yml"
 bosh sync-blobs
